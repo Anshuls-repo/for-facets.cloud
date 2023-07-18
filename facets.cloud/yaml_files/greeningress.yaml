@@ -8,7 +8,7 @@ metadata:
     kubernetes.io/elb.port: '80'
 spec:
   rules:
-    # - host: frontend.minikube.local
+    # - host: frontend
     - http:
         paths:
           - path: '/'
