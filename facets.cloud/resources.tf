@@ -1,4 +1,4 @@
-resource "aws_instance" "Jenkins" {
+resource "aws_instance" "minikube" {
   ami           = "ami-053b0d53c279acc90"  
   instance_type = "t2.medium"
   subnet_id     = aws_subnet.forassignment_subnet_1.id
@@ -6,7 +6,7 @@ resource "aws_instance" "Jenkins" {
   associate_public_ip_address = true
 
   tags = {
-    Name = "Jenkins Master"
+    Name = "minikube Master"
   }
 
   security_groups = [aws_security_group.forassignment_sg.id]
@@ -15,7 +15,7 @@ resource "aws_instance" "Jenkins" {
     type        = "ssh"
     user        = "ubuntu"                
     private_key = file("./ec2-key.pem")
-    host        = aws_instance.Jenkins.public_ip
+    host        = aws_instance.minikube.public_ip
   }
   provisioner "file" {
     source      = "${path.module}/yaml_files/"
