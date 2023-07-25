@@ -454,7 +454,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum (container_memory_working_set_bytes{kubernetes_io_hostname=~\"^$Node.*$\"})",
+          "expr": "sum (kube_pod_container_resource_requests_memory_bytes{pod_name=~\"^$Deployment.*$\"})",
           "intervalFactor": 2,
           "refId": "A",
           "step": 40
@@ -608,7 +608,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum (machine_cpu_cores{kubernetes_io_hostname=~\"^$Node$\"})",
+          "expr": "sum(kube_pod_container_resource_requests_cpu_cores{pod_name=~\"^$Deployment.*$\"})",
           "intervalFactor": 2,
           "refId": "A",
           "step": 40
